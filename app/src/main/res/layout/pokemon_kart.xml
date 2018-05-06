@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pokemonCardview"
+    android:layout_margin="10dp"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    cardview:cardCornerRadius="20dp"
+    cardview:cardElevation="3dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        android:layout_gravity="right|bottom|center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        cardview:cardCornerRadius="10dp"
+        cardview:cardElevation="10dp">>
+        <TextView
+            android:id="@+id/pokemonNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="001" />
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/lineerLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/pokemonImage"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+
+        <android.support.v7.widget.CardView
+            cardview:cardBackgroundColor="#e6ffb3"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            cardview:cardCornerRadius="10dp"
+            cardview:cardElevation="3dp">
+
+            <TextView
+                android:padding="5dp"
+                android:textColor="@android:color/black"
+                android:id="@+id/pokemonName"
+                android:layout_gravity="bottom|center"
+                android:text="BALBAZART"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            cardview:cardBackgroundColor="#e6f2ff"
+            android:id="@+id/desc_carview"
+            android:layout_gravity="bottom"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            cardview:cardCornerRadius="20dp"
+            cardview:cardElevation="3dp"
+            >
+
+            <TextView
+                android:padding="5dp"
+                android:id="@+id/pokemonDescription"
+                android:textAlignment="center"
+                android:text="Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
