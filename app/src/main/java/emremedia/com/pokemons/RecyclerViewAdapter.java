@@ -1,6 +1,10 @@
 package emremedia.com.pokemons;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,11 +41,48 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.pokemonName.setText(pokemons.get(position).getPokemonName());
-        holder.pokemonNumber.setText(pokemons.get(position).getPokemonNumber());
-        holder.pokemonDesc.setText(pokemons.get(position).getPokemonAciklama());
+
+        Pokemon currentPokemon=pokemons.get(position);
+
+        String pokemonNumber=currentPokemon.getPokemonNumber();
+        holder.pokemonName.setText(pokemonNumber+" "+currentPokemon.getPokemonName());
+        holder.pokemonDesc.setText(currentPokemon.getPokemonAciklama());
+
+
+        if (currentPokemon.getPokemonType().contains("Fire")){
+            holder.pokemonImage.setBackground(ContextCompat.getDrawable(myContext,R.drawable.ic_pok_red));
+        }
+
+        else if (currentPokemon.getPokemonType().contains("Grass")){
+            holder.pokemonImage.setBackground(ContextCompat.getDrawable(myContext,R.drawable.ic_pok_green));
+        }
+
+        else if (currentPokemon.getPokemonType().contains("Water")){
+            holder.pokemonImage.setBackground(ContextCompat.getDrawable(myContext,R.drawable.ic_pok_blue));
+            holder.pokemonName.setTextColor(ContextCompat.getColor(myContext,android.R.color.white));
+        }
+
+        else if (currentPokemon.getPokemonType().contains("Electric")){
+            holder.pokemonImage.setBackground(ContextCompat.getDrawable(myContext,R.drawable.ic_pok_yellow));
+        }
+
+        else if (currentPokemon.getPokemonType().contains("Poison")
+                || currentPokemon.getPokemonType().contains("Psychic"))
+        {
+            holder.pokemonImage.setBackground(ContextCompat.getDrawable(myContext,R.drawable.ic_pok_purple));
+            holder.pokemonName.setTextColor(ContextCompat.getColor(myContext,android.R.color.white));
+        }
+
+
+
+        else {
+            holder.pokemonImage.setBackgroundColor(ContextCompat.getColor(myContext,android.R.color.white));
+            holder.pokemonName.setTextColor(ContextCompat.getColor(myContext,android.R.color.black));
+        }
+
         Picasso.get()
                 .load(pokemons.get(position).getPokemonImage())
                 .placeholder(R.drawable.pokeball)
@@ -54,20 +95,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return pokemons.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder
+    static class MyViewHolder extends RecyclerView.ViewHolder
     {
         ImageView pokemonImage;
         TextView pokemonName;
-        TextView pokemonNumber;
         TextView pokemonDesc;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
 
-            pokemonImage=(ImageView)itemView.findViewById(R.id.pokemonImage);
-            pokemonName=(TextView) itemView.findViewById(R.id.pokemonName);
-            pokemonNumber=(TextView)itemView.findViewById(R.id.pokemonNumber);
-            pokemonDesc=(TextView)itemView.findViewById(R.id.pokemonDescription);
+            pokemonImage= itemView.findViewById(R.id.pokemonImage);
+            pokemonName= itemView.findViewById(R.id.pokemonName);
+            pokemonDesc= itemView.findViewById(R.id.pokemonDescription);
         }
     }
 }

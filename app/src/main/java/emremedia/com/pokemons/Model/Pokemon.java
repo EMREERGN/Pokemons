@@ -9,15 +9,15 @@ public class Pokemon {
     private String pokemonNumber;
     private String pokemonImage;
     private String pokemonAciklama;
+    private String pokemonType;
 
-    public Pokemon() {
-    }
 
-    public Pokemon(String pokemonName, String pokemonNumber, String pokemonImage, String pokemonAciklama) {
+    public Pokemon(String pokemonName, String pokemonNumber, String pokemonImage, String pokemonAciklama, String pokemonType) {
         this.pokemonName = pokemonName;
         this.pokemonNumber = pokemonNumber;
         this.pokemonImage = pokemonImage;
         this.pokemonAciklama = pokemonAciklama;
+        this.pokemonType = pokemonType;
     }
 
     public String getPokemonName() {
@@ -50,5 +50,13 @@ public class Pokemon {
 
     public void setPokemonAciklama(String pokemonAciklama) {
         this.pokemonAciklama = pokemonAciklama;
+    }
+
+    public String getPokemonType() {
+        return pokemonType;
+    }
+
+    public void setPokemonType(String pokemonType) {
+        this.pokemonType = pokemonType;
     }
 }
